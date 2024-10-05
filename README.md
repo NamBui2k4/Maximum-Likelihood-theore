@@ -64,23 +64,6 @@ Tương tự, đây cũng là ứng dụng của __hàm phân phối tích lũy 
 
 Rõ ràng, việc tính toán likelihood gặp rất nhiều trở ngại. Đấy là chưa kể ta không biết θ sẽ chứa cái gì (tùy thuộc vào loại phân phối mà θ có thể chứa μ, σ, λ) để mà ước lượng
 
-## ứng dụng
-
-MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện thượng nào đó có liên quan tới xác xuất.
-
-Ví dụ: 
-
-- Tung đồng xu 10 lần. Khi đó, ta coi đồng xu là một biến ngẫu nhiên X chỉ nhận một trong 2 giá trị là "sấp" hoặc "ngửa".
-Việc tung 10 lần mang hàm ý là chúng ta lấy ra 10 mẫu dữ liệu. Và thoạt nhìn thì ta cũng biết phân phối dữ liệu là phân phối nhị thức (binominal). 
-Bộ tham số của phân phối lúc này là $θ(n, p)$, trong đó n là số phép thử và p là xác xuất của một kết quả mỗi lần thử.
-
-MLE: $L(n,p) = f(x | n, p) = \binom{n}{x} p^x (1−p)^{n−x}$
-
-hoặc có thể viết tắt là
-
-$$L(n, p)=P( X =  x_1,x_2,...x_n) $$
-
-Thấy quen thuộc chứ ? Đây chính công thức xác suất của phân phối nhị thức
 ## Ước lượng một tham số
 
 Giả sử bài toán yêu cầu ước lượng hợp lý cho một tham số trong bộ θ (chẳng hạn như phân phối B(p) chỉ có một tham số là p, hay N(μ,σ) có 2 tham số nhưng ta đã biết trước 1 trong 2 và yêu cầu ước lượng cho cái còn lại). Thực hiện cái bước:
@@ -199,3 +182,21 @@ $$
     σ^2 = \frac{1}{n}∑_{i=1}^{n} x_i^2 - \bar{x}^2
 \end{cases}
 $$
+
+## ứng dụng
+
+MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện thượng nào đó có liên quan tới xác xuất.
+
+Ví dụ: 
+
+- Tung đồng xu 10 lần. Khi đó, ta coi đồng xu là một biến ngẫu nhiên X chỉ nhận một trong 2 giá trị là "sấp" hoặc "ngửa".
+Việc tung 10 lần mang hàm ý là chúng ta lấy ra 10 mẫu dữ liệu. Và thoạt nhìn thì ta cũng biết phân phối dữ liệu là phân phối nhị thức (binominal). 
+Bộ tham số của phân phối lúc này là $θ(n, p)$, trong đó n là số phép thử và p là xác xuất của một kết quả mỗi lần thử.
+
+MLE: $L(n,p) = f(x | n, p) = \binom{n}{x} p^x (1−p)^{n−x}$
+
+hoặc có thể viết tắt là
+
+$$L(n, p)=P( X =  x_1,x_2,...x_n) $$
+
+Thấy quen thuộc chứ ? Đây chính công thức xác suất của phân phối nhị thức
