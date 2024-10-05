@@ -34,7 +34,7 @@ Trong đó:
 - $x_1,x_2,...,x_n$ là mẫu dữ liệu thu được từ tổng thể
 - $θ_1,θ_2,...,θ_k$ là tập hợp tham số của phân phối dữ liệu
 
-Hàm hợp lý có thể được hiểu là xác suất để các sự kiện  $x_1,x_2,...,x_n$ cùng xảy ra (xác suất đồng thời), với điều kiện $( θ_1,θ_2,...,θ_k )$. 
+Hàm hợp lý có thể được hiểu là xác suất để các sự kiện  $x_1,x_2,...,x_n$ cùng xảy ra, với điều kiện $( θ_1,θ_2,...,θ_k )$. 
 Như vậy, cách gọi "hàm hợp lý" ở đây chính là xác suất có điều kiện. 
 
 ## Định nghĩa ước lượng hợp lý tối đa (Maximum Likelihood definition)
@@ -88,34 +88,41 @@ phân phối Bernoulli(p) là phân phối xác suất của biến liên tục 
 _Lưu ý: Cách viết $f(x|θ)$nhằm mục đích liên hệ với chủ đề likelihood_
 
 1. Xác định Likelihood: 
-$L(p) = f(x_1,x_2,...,x_n | p) = f(x_1|p).f(x_2|p)...f(x_n|p)$
+$$L(p) = f(x_1,x_2,...,x_n | p) = f(x_1|p).f(x_2|p)...f(x_n|p)$$
 
-$$=  ∏_{i = 1}^{n} p^{x_i}(1−p)^{1−x_i}  $$
+$$=∏_{i = 1}^{n} p^{x_i}(1−p)^{1−x_i}$$
 
 2. Dùng logarit đưa likelihood về dạng tổng
 
 Đặt $u(p) = log(L(p)) $, ta có:
 
-$$u(p) = log(∏_{i = 1}^{n} p^{x_i}(1−p)^{1−x_i} ) $$
-$$= ∑_{i = 1}^{n} log(p^{x_i}(1−p)^{1−x_i}) $$
+$$u(p) = log(∏_{i = 1}^{n} p^{x_i}(1−p)^{1−x_i} )$$
+
+$$= ∑_{i = 1}^{n} log(p^{x_i}(1−p)^{1−x_i})$$
+
 $$= ∑_{i=1}^{n} log(p^{x_i})+ ∑_{i=1}^{n}log(1−p)^{1−x_i}$$
-$$= ∑_{i=1}^{n} x_i×log(p) + ∑_{i=1}^{n}(1−x_i)×log(1−p) $$
+
+$$= ∑_{i=1}^{n} x_i \ log(p) + ∑_{i=1}^{n}(1−x_i) \ log(1−p)$$
 
 Đặt  $∑_{i=1}^{n} x_i = t$, ta coi t như một hằng số thì phương trình trở thành:
 
-$u(p) = t × log(p) + (n - t) × log(1-p)$
+$u(p) = t  \  log(p) + (n - t)  \  log(1-p)$
 
-3. đạo hàm: $u'(p) = t×\frac{1}{p} +(n−t)× \frac{−1}{1−p}$
+3. đạo hàm: $u'(p) = t \ \frac{1}{p} +(n−t) \  \frac{−1}{1−p}$
 
 4. likelihood đạt cực đại
-⟺ $u(p)$đạt cực đại
-⟺ $u(p)' = 0 $
-⇔ $t×\frac{1}{p} +(n−t)× \frac{−1}{1−p}=0$
-⇔ $p = \frac{1}{n} ∑_{i=1}^{n}x_i$
+   
+⟺ $u(p)$ đạt cực đại
 
-5. Kết luận:  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$là ước lượng hợp lý tối đa cần tìm
+⟺ $u'(p) = 0 $
 
-Nếu ta để ý thì  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$chính là trung bình mẫu $\bar{x}$của mẫu chứa các giá trị $x_1, x_2,...,x_n,$
+⟺ $t \ \frac{1}{p} +(n−t) \  \frac{−1}{1−p}=0$
+
+⟺ $p = \frac{1}{n} ∑_{i=1}^{n}x_i$
+
+6. Kết luận:  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$ là ước lượng hợp lý tối đa cần tìm
+
+Nếu ta để ý thì  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$ chính là trung bình mẫu $\bar{x}$ của mẫu chứa các giá trị $x_1, x_2,...,x_n,$
 
 __Bảng tóm tắt công thức ước lượng hợp lý tối đa của một số phân phối__
 
