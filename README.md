@@ -6,17 +6,19 @@ Bài viết này được kham khảo từ nguồn:
 
 - [_dangnguyenit.blogspot.com_](https://dangnguyenit.blogspot.com/2018/10/uoc-luong-hop-ly-cuc-aimaximum.html)
 
+_Ghi chú: Tôi viết bài này để review lại những kiến thức xác suất thống kê mà bản thân đã học từ thời sinh viên của mình nên bài viết này không thực sự phục vụ những bạn đọc nào quá mới mẻ, đặc biệt là những bạn nào chưa thực sự vững vàng với toán học._
+
 # Ước lượng khả năng tối đa (Maximum Likelihood Estimation - MLE)
 
-Trong thống kê và nghiên cứu khoa học nói chúng, dữ liệu thường được diễn tả thông qua những __phân phối xác suất__. Phân phối xác suất thường được đặc trưng bởi những tham số nhất định. Ví dụ, đối với phân phối chuẩn, tham số đặc trưng chính là trung bình ($μ $) và phương sai ($σ^2$). Đối với phân phối Poisson 
-thì tham số đặc trưng là tỷ lệ trung bình λ.
+Trong thống kê và nghiên cứu khoa học nói chúng, dữ liệu thường được diễn tả thông qua những __phân phối xác suất__. Các phân phối xác suất thường được đặc trưng bởi những tham số nhất định. Ví dụ, đối với phân phối chuẩn, tham số đặc trưng chính là trung bình ($μ$) và phương sai ($σ^2$). Đối với phân phối Poisson 
+thì tham số đặc trưng là tỷ lệ trung bình thời gian $λ$.
 
-Tuy nhiên, có những tình huống khó khăn khi chúng ta không thể đưa ra những con số thống kê tuyệt đối này trên một tổng thể lớn. Chẳng hạn, bạn muốn
-thống kê chiều cao trung bình của người Việt Nam nhưng lại không thể đi khắp cái nước Việt Nam 100 triệu người này và hỏi người ta "bạn cao bao nhiêu m vậy". 
-Bạn chỉ có thể đi hỏi một vài người và biết rằng chiều cao trung bình là 1m62, nhưng lại không chắc chắn con số này có đúng với 100 triệu người không.
+Tuy nhiên, có những tình huống mà chúng ta không thể đưa ra những con số tuyệt đối này khi thống kê trên một tổng thể lớn. Chẳng hạn, bạn muốn
+thống kê chiều cao trung bình của người Việt Nam nhưng lại không thể đi khắp cái nước Việt Nam với 100 triệu người này và hỏi "bạn cao bao nhiêu m vậy". 
+Bạn chỉ có thể đi hỏi khoảng 50 người và biết rằng chiều cao trung bình giữa họ là 1m62, nhưng lại không chắc chắn con số này có đúng với 100 triệu người không.
 Đó là lúc mà giải pháp **ước lượng khả năng tối đa** (Maximum Likelihood Estimation - viết tắt là MLE) ra đời. 
 
-Tuy nhiên, trước hết, ta cần hiểu rõ __hàm khả năng(Likelihood function)__ là gì.
+Tuy nhiên, trước hết, ta cần hiểu rõ __hàm khả năng (Likelihood function)__ là gì.
 
 ## Định nghĩa hàm khả năng
 
@@ -39,6 +41,8 @@ Trong đó:
 Hàm khả năng có thể được hiểu là xác suất để các sự kiện  $x_1,x_2,...,x_n$ cùng xảy ra, với điều kiện $( θ_1,θ_2,...,θ_k )$. 
 Như vậy, cách gọi "hàm khả năng" ở đây chính là xác suất có điều kiện. 
 
+--------------------
+
 ## Định nghĩa ước lượng khả năng tối đa (Maximum Likelihood definition)
 
     Trong thống kê, ước lượng khả năng tối đa là một
@@ -46,7 +50,6 @@ Như vậy, cách gọi "hàm khả năng" ở đây chính là xác suất có 
     liệu bằng cách tối đa hoá hàm khả năng sao cho
     dưới giả định của thống kê thì dữ liệu
     trở nên phù hợp nhất.
-\
 
 Nói đơn giản, ước lượng khả năng tối đa là tìm θ để $L(θ)$ đạt max.
 
@@ -65,6 +68,8 @@ $$L(θ)= p(x_1,x_2,...,x_n | θ_1,θ_2,...,θ_k) = p(x_1|θ) + p(x_2|θ) +...+ p
 Việc tính toán likelihood sẽ gặp rất nhiều trở ngại. Đấy là chưa kể ta không biết θ sẽ chứa cái gì (tùy thuộc vào loại phân phối mà ta giả định thì
 θ có thể chứa μ, σ, λ,...). Lúc này bài toán có 2 kiểu: Ước lượng một tham số và Ước lượng nhiều tham số 
 
+--------------------
+
 ## Ước lượng một tham số
 
 Bài toán lúc này yêu cầu chúng ta ước lượng likelihood cho một tham số trong bộ θ, chẳng hạn như ước lượng tham số p trong phân phối Bernoulli(p), hay tình huống phân phối chuẩn N(μ,σ) đã cho trước 1 trong 2 giá trị μ,σ và yêu cầu ta ước lượng cho cái còn lại. Khi đó, chúng ta thực hiện cái bước:
@@ -72,22 +77,21 @@ Bài toán lúc này yêu cầu chúng ta ước lượng likelihood cho một t
 1. Xác định likelihood
 2. Biến đổi likelihood về dạng logarit: $u(θ) = log(L(θ))$.  
 3. Đạo hàm riêng, ta được : $u(θ)' = log(L(θ))'$
-4. likelihood đạt cực đại
+4. likelihood đạt tối đa 
    
-     ⇔ $u(θ)$đạt cực đại
+     ⇔ $u(θ)$đạt tối đa 
  
      ⟺ $u(θ)' = 0$
  
      ⟺ tham số trong $θ$ bằng một giá trị nào đó
 5. kết luận $θ$
 
-__Ví dụ__
 
-Cho  $x_1,x_2,...,x_n$∼  Bernoulli(p). Dùng phương pháp Ước lượng khả năng cực đại(MLE) để ước lượng tham số p .
+__Ví dụ__: Cho  $x_1,x_2,...,x_n$∼  Bernoulli(p). Dùng phương pháp Ước lượng khả năng tối đa (MLE) để ước lượng tham số p .
 
 _Giải:_
 
-Phân phối Bernoulli(p) là phân phối xác suất của biến liên tục x với phân phối xác suất là: $f(x|θ) = p^{x}(1−p)^{1−x}  $
+Bernoulli(p) là phân phối xác suất của biến liên tục x. Hàm phân phối xác suất của nó là: $\quad f(x|θ) = p^{x}(1−p)^{1−x}$
 
 
 1. Xác định Likelihood: 
@@ -114,9 +118,9 @@ $u(p) = t  \  log(p) + (n - t)  \  log(1-p)$
 
 3. đạo hàm: $u'(p) = t \ \frac{1}{p} +(n−t) \  \frac{−1}{1−p}$
 
-4. likelihood đạt cực đại
+4. likelihood đạt tối đa 
    
-⟺ $u(p)$ đạt cực đại
+⟺ $u(p)$ đạt tối đa 
 
 ⟺ $u'(p) = 0 $
 
@@ -146,11 +150,11 @@ Lần này, thay vì chỉ ước lượng một thì chúng ta ước lượng 
 
 __Ví dụ__
 
-Cho  $x_1,x_2,...,x_n$∼  N(μ, $σ^2$). Dùng phương pháp Ước lượng khả năng cực đại(MLE) để ước lượng μ và $σ^2$.   
+Cho biến ngẫu nhiên $X \in [x_1,x_2,...,x_n]$ tuân theo phân phối chuẩn N(μ, $σ^2$). Dùng phương pháp Ước lượng khả năng tối đa (MLE) để ước lượng μ và $σ^2$.   
 
 _Giải_
 
-- phân phối xác suất: $\frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-μ)^2}{2\sigma^2}}$
+- phân phối xác suất: $\quad \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-μ)^2}{2\sigma^2}}$
 
 - likelihood:
 
@@ -173,8 +177,7 @@ $$= - \frac{n}{2} log(\sigma^2) - - \frac{n}{2} log(2\pi) - \frac{1}{2\sigma^2} 
     $$\frac{\partial l}{\partial σ^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2}∑_{i=1}^{n} (x_i - μ )^2$$
 
 
-- likelihood đạt cực đại
-
+- likelihood đạt tối đa 
 
 $$
 ⟺ \begin{cases}
@@ -190,6 +193,9 @@ $$
 \end{cases}
 $$
 
+Nếu đã học xác suất thống kê, bạn có thể nhận ra các kết quả mà chúng ta tính toán là tham số thống kê trên tập mẫu chứ không phải tập tổng thể. 
+Ví dụ, $μ = \bar{x}$ chính là trung bình mẫu $σ^2 = \frac{1}{n}∑_{i=1}^{n} x_i^2 - \bar{x}^2$ là phương sai mẫu.
+
 ## ứng dụng
 
 MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện thượng nào đó có liên quan tới xác xuất.
@@ -202,7 +208,6 @@ Bộ tham số của phân phối lúc này là $θ(n, p)$, trong đó n là s�
 
 MLE: $L(n,p) = f(x | n, p) = P( X =  x_1,x_2,...x_n) = \binom{n}{x} p^x (1−p)^{n−x}$
 
+Khi thu thập mẫu dữ liệu để nghiên cứu, chúng ta thường giả định nó tuân theo phân phối nào đó và sử dụng MLE như một cách để ước tính các tham số của phân phối đó. Bạn làm điều này mọi lúc mà có khi không biết. Ví dụ, khi bạn nghiên cứu chiều cao trung bình của những con chim cánh cụt ở Đảo Snow Hill thuộc Nam Cực, bạn đoán rằng con số đó cũng gần với giá trị trung bình của quần thể chim cánh cụt của cả Nam Cực. Lý do thực sự khiến bạn làm điều này là vì giá trị trung bình mẫu là MLE của giá trị trung bình quần thể (giả sử dữ liệu của bạn tuân theo phân phối Chuẩn và có xu hướng theo định lý giới hạn trung tâm).
 
-Thấy quen thuộc chứ ? Đây chính công thức xác suất của phân phối nhị thức
 
-Hoặc, bạn có 10 con xúc xắc không đồng chất (có con 4 mặt, 5 mặt, 6 mặt,...) và bạn muốn biết con nào cho ra xác suất 7 mạth
