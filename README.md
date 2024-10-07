@@ -196,9 +196,9 @@ $$
 Nếu đã học xác suất thống kê, bạn có thể nhận ra các kết quả mà chúng ta tính toán là tham số thống kê trên tập mẫu chứ không phải tập tổng thể. 
 Ví dụ, $μ = \bar{x}$ chính là trung bình mẫu $σ^2 = \frac{1}{n}∑_{i=1}^{n} x_i^2 - \bar{x}^2$ là phương sai mẫu.
 
-## ứng dụng
+## Ứng dụng
 
-MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện thượng nào đó có liên quan tới xác xuất.
+MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện tượng nào đó có liên quan tới xác xuất.
 
 Ví dụ: 
 
