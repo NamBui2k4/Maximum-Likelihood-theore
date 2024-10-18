@@ -66,33 +66,33 @@ $$L(θ)= p(x_1,x_2,...,x_n | θ_1,θ_2,...,θ_k) = p(x_1|θ) + p(x_2|θ) +...+ p
 (Nói chung thì cũng chỉ là khác nhau giữa dấu nhân và dấu cộng :v )
 
 Việc tính toán likelihood sẽ gặp rất nhiều trở ngại. Đấy là chưa kể ta không biết θ sẽ chứa cái gì (tùy thuộc vào loại phân phối mà ta giả định thì
-θ có thể chứa μ, σ, λ,...). Lúc này bài toán có 2 kiểu: Ước lượng một tham số và Ước lượng nhiều tham số 
+θ có thể chứa μ, σ, λ,...). Lúc này bài toán có 2 kiểu: Ước lượng một $θ$ và Ước lượng nhiều $θ$.
 
---------------------
+## Ước lượng một $θ$
 
-## Ước lượng một tham số
+Giả định rằng ta biết trước phân phối dữ liệu (tức là biết trước bộ tham số $θ$ có cái gì) , bài toán lúc này yêu cầu chúng ta ước lượng likelihood cho một tham số trong bộ θ.
 
-Bài toán lúc này yêu cầu chúng ta ước lượng likelihood cho một tham số trong bộ θ, chẳng hạn như ước lượng tham số p trong phân phối Bernoulli(p), hay tình huống phân phối chuẩn N(μ,σ) đã cho trước 1 trong 2 giá trị μ,σ và yêu cầu ta ước lượng cho cái còn lại. Khi đó, chúng ta thực hiện cái bước:
+Có 5 bước để giải:
 
-1. Xác định likelihood
-2. Biến đổi likelihood về dạng logarit: $u(θ) = log(L(θ))$.  
-3. Đạo hàm riêng, ta được : $u(θ)' = log(L(θ))'$
-4. likelihood đạt tối đa 
+1. **Xác định likelihood**
+2. **Biến đổi likelihood về dạng logarit**: $u(θ) = log(L(θ))$.  
+3. **Đạo hàm riêng**: $u(θ)' = log(L(θ))'$
+4. **likelihood đạt tối đa**
    
      ⇔ $u(θ)$đạt tối đa 
  
      ⟺ $u(θ)' = 0$
  
      ⟺ tham số trong $θ$ bằng một giá trị nào đó
-5. kết luận $θ$
+5. **kết luận** $θ$
 
+_____________________________
 
-__Ví dụ__: Cho  $x_1,x_2,...,x_n$∼  Bernoulli(p). Dùng phương pháp Ước lượng khả năng tối đa (MLE) để ước lượng tham số p .
+__Ví dụ__: Cho  $x_1,x_2,...,x_n$∼  Bernoulli(p). Dùng phương pháp MLE để ước lượng tham số $p$ .
 
 _Giải:_
 
-Bernoulli(p) là phân phối xác suất của biến liên tục x. Hàm phân phối xác suất của nó là: $\quad f(x|θ) = p^{x}(1−p)^{1−x}$
-
+$Bernoulli(p)$ là phân phối xác suất của biến liên tục x. Hàm phân phối xác suất của nó là: $\quad f(x|θ) = p^{x}(1−p)^{1−x}$
 
 1. Xác định Likelihood: 
 $$L(p) = f(x_1,x_2,...,x_n | p) = f(x_1|p).f(x_2|p)...f(x_n|p)$$
@@ -130,9 +130,14 @@ $u(p) = t  \  log(p) + (n - t)  \  log(1-p)$
 
 6. Kết luận:  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$ là ước lượng khả năng tối đa cần tìm
 
-Nếu ta để ý thì  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$ chính là trung bình mẫu $\bar{x}$ của mẫu của mẫu dữ liệu mà ta thu thập ban đầu.
+______________________
 
-__Bảng tóm tắt công thức ước lượng khả năng tối đa của một số phân phối__
+Nếu ta để ý thì  $p = \frac{1}{n} ∑_{i=1}^{n}x_i$ chính là công thức tính trung bình mẫu mà bạn (có thể) đã học trong xác suất thống kê. Điều này dẫn đến một triết lý "Cái gì cũng có nguyên nhân của nó", ngụ ý rằng các công thức tưởng chừng khô khan và vô nghĩa vốn đã có nguồn gốc từ phương pháp Maximum likelihood kỳ diệu này.
+
+_Note: Có những tình huống bài toán giả định phân phối có 2 tham số (ví dụ phân phối chuẩn N(μ,σ)). Yêu cầu lúc này là ta phải ước lượng một trong 2 tham số đó với điều kiện là ta đã biết cái còn lại._
+
+Với phương pháp MLE trên, người ta đã tìm ra công thức ước lượng 1 tham số cho tất cả các phân phối xác xuất khác nhau trong lịch sử. Ta có thể thấy điều đó thông qua bảng sau:
+
 
 | Phân phối      |              MLE           |
 |----------------|----------------------------|
@@ -193,9 +198,6 @@ $$
 \end{cases}
 $$
 
-Nếu đã học xác suất thống kê, bạn có thể nhận ra các kết quả mà chúng ta tính toán là tham số thống kê trên tập mẫu chứ không phải tập tổng thể. 
-Ví dụ, $μ = \bar{x}$ chính là trung bình mẫu $σ^2 = \frac{1}{n}∑_{i=1}^{n} x_i^2 - \bar{x}^2$ là phương sai mẫu.
-
 ## Ứng dụng
 
 MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện tượng nào đó có liên quan tới xác xuất.
@@ -208,6 +210,7 @@ Bộ tham số của phân phối lúc này là $θ(n, p)$, trong đó n là s�
 
 MLE: $L(n,p) = f(x | n, p) = P( X =  x_1,x_2,...x_n) = \binom{n}{x} p^x (1−p)^{n−x}$
 
-Khi thu thập mẫu dữ liệu để nghiên cứu, chúng ta thường giả định nó tuân theo phân phối nào đó và sử dụng MLE như một cách để ước tính các tham số của phân phối đó. Bạn làm điều này mọi lúc mà có khi không biết. Ví dụ, khi bạn nghiên cứu chiều cao trung bình của những con chim cánh cụt ở Đảo Snow Hill thuộc Nam Cực, bạn đoán rằng con số đó cũng gần với giá trị trung bình của quần thể chim cánh cụt của cả Nam Cực. Lý do thực sự khiến bạn làm điều này là vì giá trị trung bình mẫu là MLE của giá trị trung bình quần thể (giả sử dữ liệu của bạn tuân theo phân phối Chuẩn và có xu hướng theo định lý giới hạn trung tâm).
+Một ví dụ khác, tưởng tượng bạn là một nhà nghiên cứu động vật và bạn đến Nam Cực để nghiên cứu chiều cao trung bình của những con chim cánh cụt, bạn sẽ làm gì để nghiên cứu ? Đơn giản nhất là đi bắt từng con (không phải kiểu săn bắn, bị còng đầu đấy :v) rồi đo chiều cao của chúng, sau đó tính trung bình. Nhưng như tôi đã ví dụ ở đầu bài viết, bạn không thể đi khắp cái Nam Cực để làm điều đó (trừ khi bạn đủ kiên nhẫn và đủ tiền trang trải chi phí cho việc này). Bạn chỉ có thể loanh quanh đảo Snow Hill, một trong những nơi tập trung nhiều chim cánh cụt nhất ở Nam Cực. Khi đó, việc bạn làm là thu thập mẫu dữ liệu để nghiên cứu, và bạn giả định chiều cao của đám này tuân theo tuân một theo phân phối nào đó. Khi đó tôi dám cá rằng bạn sẽ sử dụng MLE như một cách để ước tính các tham số của phân phối đó. 
 
+Thật đấy, bạn làm điều này mọi lúc mà có khi không biết. Khi bạn khảo sát trên một vài con đầu tiên, bạn sẽ thấy rằng kết quả thu được chưa đủ thuyết phục lắm, và bạn tiếp tục chọn ra những con tiếp theo. Cảm thấy chưa đủ thỏa mãn, bạn chọn một quần thể lớn hơn để tiếp tục đo đạc. Cứ hết lần này đến lần khác, bạn lấy ra một bầy chim để đo chiều cao của chúng, thỉnh thoảng sẽ lòi ra một vài con bị trùng lặp với lần trước đã đo. Cho tới khi giá trị trung bình loanh quanh một kết quả nào đó không đổi, ví dụ 1m43 chẳng hạn. Lúc này, bạn đoán rằng con số 1m43 đó "có vẻ" cũng gần với chiều cao trung bình của chim cánh cụt của cả lục địa Nam Cực. Lý do thực sự khiến bạn làm điều này là vì bạn tin rằng giá trị trung bình của mẫu chính là giá trị tối đa của likelikhood mà bạn có thể ước tính. Tất nhiên, kết quả này chỉ củng cố niềm tin cho bạn thôi chứ nó không chứng minh rằng 1m43 là chiều cao trung bình của chim cánh cụt ở Nam Cực. Cho dù có thực hiện trên tất cả các khu vực khác của Nam Cực thì kết quả của bạn cũng chỉ là con số nhất thời (Nên là nếu có phát hiện điều gì mới mẻ cũng khoan vội kết luận vì biết đâu người ta còn tìm ra thứ tốt hơn của bạn :))).
 
