@@ -6,7 +6,7 @@ Bài viết này được kham khảo từ nguồn:
 
 - [_dangnguyenit.blogspot.com_](https://dangnguyenit.blogspot.com/2018/10/uoc-luong-hop-ly-cuc-aimaximum.html)
 
-_Lưu ý_: Bài viết này rát nhiều toán, nếu không thích toán (và sai chính tả nửa :v), bạn có thể bỏ qua.
+_Lưu ý_: Bài viết này rát nhiều toán  (và sai chính tả nửa :v). Nếu không thích toán, bạn có thể bỏ qua.
 
 _Ghi chú: Tôi viết bài này để review lại những kiến thức xác suất thống kê mà bản thân đã học từ thời sinh viên của mình nên bài viết này không thực sự phục vụ những bạn đọc nào quá mới mẻ, đặc biệt là những bạn nào chưa thực sự vững vàng với toán học._
 
