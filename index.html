@@ -23,15 +23,15 @@ layout: default
 </ul>
 <p><em>Lưu ý</em>: Bài viết này rát nhiều toán  (và sai chính tả nửa :v). Nếu không thích toán, bạn có thể bỏ qua.</p>
 <p><em>Ghi chú: Tôi viết bài này để review lại những kiến thức xác suất thống kê mà bản thân đã học từ thời sinh viên của mình nên bài viết này không thực sự phục vụ những bạn đọc nào quá mới mẻ, đặc biệt là những bạn nào chưa thực sự vững vàng với toán học.</em></p>
-<h1 id="uoc-luong-kha-nang-toi-a-maximum-likelihood-estimation-mle">Ước lượng khả năng tối đa (Maximum Likelihood Estimation - MLE)</h1>
+<h1>Ước lượng khả năng tối đa (Maximum Likelihood Estimation - MLE)</h1>
 <p>Trong thống kê và nghiên cứu khoa học nói chúng, dữ liệu thường được diễn tả thông qua những <strong>phân phối xác suất</strong>. Các phân phối xác suất thường được đặc trưng bởi những tham số nhất định. Ví dụ, đối với phân phối chuẩn, tham số đặc trưng chính là trung bình (<span class="math">\(μ\)</span>) và phương sai (<span class="math">\(σ^2\)</span>). Đối với phân phối Poisson
 thì tham số đặc trưng là tỷ lệ trung bình thời gian <span class="math">\(λ\)</span>.</p>
 <p>Tuy nhiên, có những tình huống mà chúng ta không thể đưa ra những con số tuyệt đối này khi thống kê trên một tổng thể lớn. Chẳng hạn, bạn muốn
 thống kê chiều cao trung bình của người Việt Nam nhưng lại không thể đi khắp cái nước Việt Nam với 100 triệu người này và hỏi &quot;bạn cao bao nhiêu m vậy&quot;.
 Bạn chỉ có thể đi hỏi khoảng 50 người và biết rằng chiều cao trung bình giữa họ là 1m62, nhưng lại không chắc chắn con số này có đúng với 100 triệu người không.
-Đó là lúc mà giải pháp <strong>ước lượng khả năng tối đa</strong> (Maximum Likelihood Estimation - viết tắt là MLE) ra đời.</p>
-<p>Tuy nhiên, trước hết, ta cần hiểu rõ <strong>hàm khả năng (Likelihood function)</strong> là gì.</p>
-<h2 id="inh-nghia-ham-kha-nang">Định nghĩa hàm khả năng</h2>
+Đó là lúc mà giải pháp <strong>ước lượng khả năng tối đa (Maximum Likelihood Estimation - viết tắt là MLE) ra đời. Tuy nhiên, trước hết, ta cần hiểu rõ <strong>hàm khả năng (Likelihood function) là gì.</p>
+
+<h2>Định nghĩa hàm khả năng</h2>
 <pre><code>Trong thống kê, Likelihood function - gọi là
 hàm khả năng, được hiểu là một hàm đo lường
 mức độ &quot;phù hợp&quot; của một bộ tham số cụ thể với
@@ -87,7 +87,7 @@ trở nên phù hợp nhất.
 </li>
 </ol>
 <hr />
-<p><strong>Ví dụ</strong>: Cho  \(x_1,x_2,...,x_n\)∼  Bernoulli(p). Dùng phương pháp MLE để ước lượng tham số <span class="math">\(p\)</span> .</p>
+<p><strong>Ví dụ: Cho  \(x_1,x_2,...,x_n\)∼  Bernoulli(p). Dùng phương pháp MLE để ước lượng tham số <span class="math">\(p\)</span> .</p>
 <p><em>Giải:</em></p>
 <p><span class="math">\(Bernoulli(p)\)</span> là phân phối xác suất của biến liên tục x. Hàm phân phối xác suất của nó là: <span class="math">\(\quad f(x|θ) = p^{x}(1−p)^{1−x}\)</span></p>
 <ol>
@@ -95,9 +95,7 @@ trở nên phù hợp nhất.
 <span class="math">\(L(p) = f(x_1,x_2,...,x_n | p) = f(x_1|p).f(x_2|p)...f(x_n|p)\)</span></li>
 </ol>
 <p><span class="math">\(=∏_{i = 1}^{n} p^{x_i}(1−p)^{1−x_i}\)</span></p>
-<ol start="2">
 <li>Dùng logarit đưa likelihood về dạng tổng</li>
-</ol>
 <p>Đặt \( u(p) = log(L(p)) \), ta có:</p>
 <p><span class="math">\(u(p) = log(∏_{i = 1}^{n} p^{x_i}(1−p)^{1−x_i} )\)</span></p>
 <p><span class="math">\(= ∑_{i = 1}^{n} log(p^{x_i}(1−p)^{1−x_i})\)</span></p>
@@ -105,12 +103,10 @@ trở nên phù hợp nhất.
 <p><span class="math">\(= ∑_{i=1}^{n} x_i \ log(p) + ∑_{i=1}^{n}(1−x_i) \ log(1−p)\)</span></p>
 <p>Đặt  <span class="math">\(∑_{i=1}^{n} x_i = t\)</span>, ta coi t như một hằng số thì phương trình trở thành:</p>
 <p><span class="math">\(u(p) = t  \  log(p) + (n - t)  \  log(1-p)\)</span></p>
-<ol start="3">
 <li><p>đạo hàm: <span class="math">\(u'(p) = t \ \frac{1}{p} +(n−t) \  \frac{−1}{1−p}\)</span></p>
 </li>
 <li><p>likelihood đạt tối đa</p>
 </li>
-</ol>
 <p>⟺ <span class="math">\(u(p)\)</span> đạt tối đa</p>
 <p>⟺ \(u'(p) = 0 \)</p>
 <p>⟺ <span class="math">\(t \ \frac{1}{p} +(n−t) \  \frac{−1}{1−p}=0\)</span></p>
@@ -201,7 +197,7 @@ trở nên phù hợp nhất.
     σ^2 = \frac{1}{n}∑_{i=1}^{n} x_i^2 - \bar{x}^2
 \end{cases}
 \]</div>
-<h2 id="ung-dung">Ứng dụng</h2>
+<h2>Ứng dụng</h2>
 <p>MLE có rất nhiều ứng dụng (chủ yếu là dành cho dân thống kê và dân nghiên cứu) chẳng hạn như lý giải một hiện tượng nào đó có liên quan tới xác xuất.</p>
 <p>Ví dụ:</p>
 <ul>
